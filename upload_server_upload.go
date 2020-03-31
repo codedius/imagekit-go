@@ -28,7 +28,7 @@ func (s *UploadService) ServerUpload(ctx context.Context, r *UploadRequest) (*Up
 	w := multipart.NewWriter(&b)
 
 	// Compose all fields
-	err := w.WriteField("imageFileName", r.FileName)
+	err := w.WriteField("fileName", r.FileName)
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +40,7 @@ func (s *UploadService) ServerUpload(ctx context.Context, r *UploadRequest) (*Up
 	if err != nil {
 		return nil, err
 	}
-	err = w.WriteField("imageFolder", r.Folder)
+	err = w.WriteField("folder", r.Folder)
 	if err != nil {
 		return nil, err
 	}
