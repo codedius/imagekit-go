@@ -21,7 +21,7 @@ import (
 const (
 	baseURLAPI       = "https://api.imagekit.io/"
 	baseURLUpload    = "https://upload.imagekit.io/"
-	libraryVersion   = "1.0.0"
+	libraryVersion   = "1.0.1"
 	libraryUserAgent = "imagekit-go/" + libraryVersion
 )
 
