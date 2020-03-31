@@ -1,4 +1,4 @@
-// Package imagekit provides Go SDK to work with Imagekit.io image processing service.
+// Package imagekit provides Go client to work with Imagekit.io image processing service API.
 package imagekit
 
 import (
@@ -21,7 +21,7 @@ import (
 const (
 	baseURLAPI       = "https://api.imagekit.io/"
 	baseURLUpload    = "https://upload.imagekit.io/"
-	libraryVersion   = "1.0.1"
+	libraryVersion   = "1.0.2"
 	libraryUserAgent = "imagekit-go/" + libraryVersion
 )
 
