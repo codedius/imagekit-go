@@ -108,5 +108,5 @@ func (s *UploadService) ServerUpload(ctx context.Context, r *UploadRequest) (*Up
 		return nil, err
 	}
 
-	return nil, err
+	return res, err
 }
