@@ -1,3 +1,3 @@
-module github.com/vlepeshev/imagekit-go
+module github.com/codedius/imagekit-go
 
 go 1.14
