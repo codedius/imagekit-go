@@ -3,13 +3,13 @@ A Go client library for accessing the [ImageKit.io API](https://docs.imagekit.io
 
 ## Installation
 Use the following command to download this module:
-```go
-go get github.com/vlepeshev/imagekit-go
+```
+go get github.com/codedius/imagekit-go
 ```
 
 ## Usage
 ```go
-import "github.com/vlepeshev/imagekit-go"
+import "github.com/codedius/imagekit-go"
 ```
 Construct a new API client, then use to access the ImageKit.io API. For example:
 ```go
