@@ -43,4 +43,4 @@ if err != nil {
     // error handling
 }
 ```
-Other methods are pretty straightforward and doesn't need extra explanations. For more info please read library's [documentation](https://pkg.go.dev/github.com/vlepeshev/imagekit-go?tab=doc) from go.dev and ImageKit.io API [documentation](https://docs.imagekit.io).
+Other methods are pretty straightforward and doesn't need extra explanations. For more info please read library's [documentation](https://pkg.go.dev/github.com/codedius/imagekit-go?tab=doc) from go.dev and ImageKit.io API [documentation](https://docs.imagekit.io).
