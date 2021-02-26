@@ -36,8 +36,8 @@ type UploadResponse struct {
 	Name string `json:"name"`
 	// URL of the file.
 	URL string `json:"url"`
-	// Thumbnail is a small thumbnail URL in case of an image.
-	Thumbnail string `json:"thumbnail"`
+	// ThumbnailURL is a small thumbnail URL in case of an image.
+	ThumbnailURL string `json:"thumbnailUrl"`
 	// Height of the uploaded image file.
 	//
 	// Only applicable when file type is image.
