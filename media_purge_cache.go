@@ -52,6 +52,9 @@ func (s *MediaService) PurgeCache(ctx context.Context, r *PurgeCacheRequest) (*P
 		return nil, err
 	}
 
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
+
 	// Submit the request
 	res := new(PurgeCacheResponse)
 

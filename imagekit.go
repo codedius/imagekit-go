@@ -21,7 +21,7 @@ import (
 const (
 	baseURLAPI       = "https://api.imagekit.io/"
 	baseURLUpload    = "https://upload.imagekit.io/"
-	libraryVersion   = "1.0.4"
+	libraryVersion   = "1.1.2"
 	libraryUserAgent = "imagekit-go/" + libraryVersion
 )
 
@@ -126,9 +126,6 @@ func (c *Client) request(method, path string, body io.Reader, t requestType) (*h
 
 	req.Header.Set("Authorization", fmt.Sprintf("Basic %s", key))
 	req.Header.Set("User-Agent", libraryUserAgent)
-	if t == requestTypeAPI {
-		req.Header.Set("Content-Type", "application/json")
-	}
 
 	return req, nil
 }

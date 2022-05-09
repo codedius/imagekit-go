@@ -52,6 +52,9 @@ func (s *MediaService) CopyFolder(ctx context.Context, r *CopyFolderRequest) (*C
 		return nil, err
 	}
 
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
+
 	// Submit the request
 	res := new(CopyFolderResponse)
 

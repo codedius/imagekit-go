@@ -44,6 +44,9 @@ func (s *MediaService) MoveFile(ctx context.Context, r *MoveFileRequest) error {
 		return err
 	}
 
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
+
 	err = s.client.do(ctx, req, nil)
 	if err != nil {
 		return err

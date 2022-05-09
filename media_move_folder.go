@@ -52,6 +52,9 @@ func (s *MediaService) MoveFolder(ctx context.Context, r *MoveFolderRequest) (*M
 		return nil, err
 	}
 
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
+
 	// Submit the request
 	res := new(MoveFolderResponse)
 

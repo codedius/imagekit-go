@@ -40,6 +40,9 @@ func (s *MediaService) RemoveTags(ctx context.Context, r *RemoveTagsRequest) err
 		return err
 	}
 
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
+
 	err = s.client.do(ctx, req, nil)
 	if err != nil {
 		return err

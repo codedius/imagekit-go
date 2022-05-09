@@ -1,3 +1,3 @@
-module github.com/suryaadi44/imagekit-go
+module github.com/codedius/imagekit-go
 
-go 1.18
+go 1.17
