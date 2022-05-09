@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -38,11 +40,20 @@ func (s *MediaService) CopyFolder(ctx context.Context, r *CopyFolderRequest) (*C
 		return nil, errors.New("request is empty")
 	}
 
-	// Prepare request
-	req, err := s.client.request("POST", "v1/bulkJobs/copyFolder", nil, requestTypeAPI)
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
 	if err != nil {
 		return nil, err
 	}
+
+	// Prepare request
+	req, err := s.client.request("POST", "v1/bulkJobs/copyFolder", b, requestTypeAPI)
+	if err != nil {
+		return nil, err
+	}
+
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
 
 	// Submit the request
 	res := new(CopyFolderResponse)

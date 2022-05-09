@@ -68,7 +68,7 @@ type UpdateFileDetailsResponse struct {
 // METHODS
 //
 
-// GetFileDetails such as tags, customCoordinates, and isPrivate properties using get file detail API.
+// UpdateFileDetails such as tags, customCoordinates, and isPrivate properties using get file detail API.
 func (s *MediaService) UpdateFileDetails(ctx context.Context, fid string, r *UpdateFileDetailsRequest) (*UpdateFileDetailsResponse, error) {
 	if r == nil {
 		return nil, errors.New("request is empty")
@@ -88,6 +88,9 @@ func (s *MediaService) UpdateFileDetails(ctx context.Context, fid string, r *Upd
 	if err != nil {
 		return nil, err
 	}
+
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
 
 	// Submit the request
 	res := new(UpdateFileDetailsResponse)

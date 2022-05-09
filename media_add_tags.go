@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -26,11 +28,20 @@ func (s *MediaService) AddTags(ctx context.Context, r *AddTagsRequest) error {
 		return errors.New("request is empty")
 	}
 
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
+	if err != nil {
+		return nil
+	}
+
 	// Prepare request
-	req, err := s.client.request("POST", "v1/files/addTags", nil, requestTypeAPI)
+	req, err := s.client.request("POST", "v1/files/addTags", b, requestTypeAPI)
 	if err != nil {
 		return err
 	}
+
+	// Set necessary headers
+	req.Header.Set("Content-Type", "application/json")
 
 	err = s.client.do(ctx, req, nil)
 	if err != nil {
