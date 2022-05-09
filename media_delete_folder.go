@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -28,8 +30,14 @@ func (s *MediaService) DeleteFolder(ctx context.Context, r *DeleteFolderRequest)
 		return errors.New("request is empty")
 	}
 
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
+	if err != nil {
+		return err
+	}
+
 	// Prepare request
-	req, err := s.client.request("DELETE", "v1/files/folder", nil, requestTypeAPI)
+	req, err := s.client.request("DELETE", "v1/folder", b, requestTypeAPI)
 	if err != nil {
 		return err
 	}

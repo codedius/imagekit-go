@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -34,8 +36,14 @@ func (s *MediaService) CreateFolder(ctx context.Context, r *CreateFolderRequest)
 		return errors.New("request is empty")
 	}
 
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
+	if err != nil {
+		return err
+	}
+
 	// Prepare request
-	req, err := s.client.request("POST", "v1/files/folder", nil, requestTypeAPI)
+	req, err := s.client.request("POST", "v1/files/folder", b, requestTypeAPI)
 	if err != nil {
 		return err
 	}

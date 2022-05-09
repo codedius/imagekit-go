@@ -126,6 +126,9 @@ func (c *Client) request(method, path string, body io.Reader, t requestType) (*h
 
 	req.Header.Set("Authorization", fmt.Sprintf("Basic %s", key))
 	req.Header.Set("User-Agent", libraryUserAgent)
+	if t == requestTypeAPI {
+		req.Header.Set("Content-Type", "application/json")
+	}
 
 	return req, nil
 }

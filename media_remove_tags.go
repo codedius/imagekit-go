@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -26,8 +28,14 @@ func (s *MediaService) RemoveTags(ctx context.Context, r *RemoveTagsRequest) err
 		return errors.New("request is empty")
 	}
 
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
+	if err != nil {
+		return err
+	}
+
 	// Prepare request
-	req, err := s.client.request("POST", "v1/files/removeTags", nil, requestTypeAPI)
+	req, err := s.client.request("POST", "v1/files/removeTags", b, requestTypeAPI)
 	if err != nil {
 		return err
 	}

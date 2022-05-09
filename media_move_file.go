@@ -1,7 +1,9 @@
 package imagekit
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"errors"
 )
 
@@ -30,8 +32,14 @@ func (s *MediaService) MoveFile(ctx context.Context, r *MoveFileRequest) error {
 		return errors.New("request is empty")
 	}
 
+	b := new(bytes.Buffer)
+	err := json.NewEncoder(b).Encode(r)
+	if err != nil {
+		return err
+	}
+
 	// Prepare request
-	req, err := s.client.request("POST", "v1/files/move", nil, requestTypeAPI)
+	req, err := s.client.request("POST", "v1/files/move", b, requestTypeAPI)
 	if err != nil {
 		return err
 	}
